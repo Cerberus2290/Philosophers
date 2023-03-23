@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 12:37:48 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/03/23 12:53:49 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/03/23 12:58:39 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,15 @@ typedef struct s_control
 	int					end_meal;
 	int					game_over;
 }	t_control;
+
+/* functions of init.c */
+
+/* functions of timeutils.c */
+
+/* functions of utils.c */
+
+/* functions of philo_control.c */
+
+/* functions of philo_acts.c */
 
 #endif
