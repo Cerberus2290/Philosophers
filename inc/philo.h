@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 12:37:48 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/03/23 12:58:39 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/03/23 13:23:24 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_philo		t_philo;
 /* struct to store all info about philosophers */
 typedef struct s_philo
 {
-	phthread_t	tid;
+	pthread_t	tid;
 	int			id;
 	int			meals_eaten;
 	long long	t_lastmeal;
@@ -48,26 +48,31 @@ typedef struct s_philo
 /* struct to store info about eat, sleep, die */
 typedef struct s_control
 {
-	int					nb_philo;
-	long long			t0;
-	long long			t_to_die;
-	long long			t_to_eat;
-	long long			t_to_sleep;
-	int					max_meals;
-	t_philo				*philo;
-	phthread_mutex_t	*fork;
-	phthread_mutex_t	cout;
-	phthread_mutex_t	checker;
-	int					error;
-	int					end_meal;
-	int					game_over;
+	int				nb_philo;
+	long long		t0;
+	long long		t_to_die;
+	long long		t_to_eat;
+	long long		t_to_sleep;
+	int				max_meals;
+	t_philo			*philo;
+	pthread_mutex_t	*fork;
+	pthread_mutex_t	cout;
+	pthread_mutex_t	checker;
+	int				error;
+	int				end_meal;
+	int				game_over;
 }	t_control;
 
 /* functions of init.c */
 
 /* functions of timeutils.c */
+long long	start_time(void);
 
 /* functions of utils.c */
+int		ft_atoi(const char *str);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t count, size_t size);
+void	philo_print(t_philo *p, char *state);
 
 /* functions of philo_control.c */
 
