@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 12:37:48 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/03/23 13:23:24 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/03/27 12:38:42 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,20 @@ typedef struct s_control
 
 /* functions of init.c */
 
+int			check_input(int argc, char **argv);
+void		init_s_control(char **argv, t_control *input);
+void		init_s_philo(t_control *input);
+
 /* functions of timeutils.c */
+
 long long	start_time(void);
 
 /* functions of utils.c */
-int		ft_atoi(const char *str);
-void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t count, size_t size);
-void	philo_print(t_philo *p, char *state);
+
+int			ft_atoi(const char *str);
+void		ft_bzero(void *s, size_t n);
+void		*ft_calloc(size_t count, size_t size);
+void		philo_print(t_philo *p, char *state);
 
 /* functions of philo_control.c */
 
