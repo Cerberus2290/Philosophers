@@ -6,13 +6,13 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 17:05:56 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/04/18 17:16:23 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:29:57 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int main (int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_control	*data;
 

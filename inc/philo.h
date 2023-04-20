@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 12:37:48 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/03/27 12:38:42 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:29:47 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void		init_s_philo(t_control *input);
 /* functions of timeutils.c */
 
 long long	start_time(void);
+long long	timestamp(t_control *input);
+void		ft_sleep(t_philo *p, int t_wait);
 
 /* functions of utils.c */
 
@@ -83,5 +85,8 @@ void		philo_print(t_philo *p, char *state);
 /* functions of philo_control.c */
 
 /* functions of philo_acts.c */
+
+void		*one_philo(void *p);
+void		philo_eats(t_philo *ph);
 
 #endif
