@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 12:37:48 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/04/20 14:29:47 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/20 15:40:45 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,16 @@ void		philo_print(t_philo *p, char *state);
 
 /* functions of philo_control.c */
 
+void		philo_start(t_control *input);
+void		*philo_act(void *p);
+void		checking(t_control *c);
+void		check_death(t_philo *p);
+
 /* functions of philo_acts.c */
 
 void		*one_philo(void *p);
 void		philo_eats(t_philo *ph);
+void		philo_thinks(t_philo *ph);
+void		philo_sleeps(t_philo *ph);
 
 #endif

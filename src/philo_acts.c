@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 17:09:36 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/04/20 14:30:11 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:36:06 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,24 @@ void	philo_eats(t_philo *ph)
 		ft_sleep(ph, ph->args->t_to_eat);
 		pthread_mutex_unlock(&ph->args->fork[ph->l_fork]);
 		pthread_mutex_unlock(&ph->args->fork[ph->r_fork]);
+	}
+}
+
+/* prints message for philosopher thinking
+if not dead */
+void	philo_thinks(t_philo *ph)
+{
+	if (ph->args->game_over == FALSE)
+		philo_print(ph, "'s thinking");
+}
+
+/* prints message for philosopher sleeping
+if not dead */
+void	philo_sleeps(t_philo *ph)
+{
+	if (ph->args->game_over == FALSE)
+	{
+		philo_print(ph, "'s sleeping");
+		ft_sleep(ph, ph->args->t_to_sleep);
 	}
 }
