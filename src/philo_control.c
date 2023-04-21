@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:52:47 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/04/20 15:43:15 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/21 10:16:57 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,9 @@ void	check_death(t_philo *p)
 	pthread_mutex_unlock(&p->args->checker);
 }
 
+/* cleans up resources of simulation
+joins all philosopher threads & destroys mutexes
+frees allocated memory */
 void	philo_over(t_control *input)
 {
 	int	i;
@@ -107,5 +110,11 @@ void	philo_over(t_control *input)
 	i = input->nb_philo;
 	while (--i >= 0)
 		pthread_join(input->philo[i].tid, NULL);
-	
+	while (++i < input->philo[i].tid, NULL)
+		pthread_mutex_destroy(&input->fork[i]);
+	pthread_mutex_destroy(&input->cout);
+	pthread_mutex_destroy(&input->checker);
+	free(input->philo);
+	free(input->fork);
+	free(input);
 }

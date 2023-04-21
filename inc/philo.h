@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 12:37:48 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/04/20 15:40:45 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/21 10:17:29 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void		philo_start(t_control *input);
 void		*philo_act(void *p);
 void		checking(t_control *c);
 void		check_death(t_philo *p);
+void		philo_over(t_control *input);
 
 /* functions of philo_acts.c */
 
