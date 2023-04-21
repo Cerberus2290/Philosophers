@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 12:37:48 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/04/21 12:11:12 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:46:15 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_control
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	cout;
 	pthread_mutex_t	checker;
+	pthread_mutex_t	game_over_mutex;
 	int				error;
 	int				end_meal;
 	int				game_over;
@@ -88,7 +89,7 @@ void		philo_print(t_philo *p, char *state);
 void		philo_start(t_control *input);
 void		*philo_act(void *p);
 void		checking(t_control *c);
-void		check_death(t_philo *p);
+void		check_death(t_philo *p, pthread_mutex_t *game_over_mutex);
 void		philo_over(t_control *input);
 
 /* functions of philo_acts.c */

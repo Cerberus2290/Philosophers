@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:52:47 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/04/21 14:53:34 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/21 17:36:48 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	checking(t_control *c)
 	death_i = 0;
 	while (c->game_over == FALSE)
 	{
-		check_death(&c->philo[death_i]);
+		check_death(&c->philo[death_i], &c->game_over_mutex);
 		if (c->max_meals > 0)
 		{
 			while (meal_i < c->nb_philo)
@@ -89,15 +89,15 @@ void	checking(t_control *c)
 /* checks if a philosopher has died
 prints a message that philosopher died
 ensures that only one philosopher can check death at a time */
-void	check_death(t_philo *p)
+void	check_death(t_philo *p, pthread_mutex_t *game_over_mutex)
 {
-	pthread_mutex_lock(&p->args->checker);
+	pthread_mutex_lock(game_over_mutex);
 	if ((timestamp(p->args) - p->t_lastmeal) >= p->args->t_to_die)
 	{
 		philo_print(p, "died \xF0\x9F\x92\x80");
 		p->args->game_over = TRUE;
 	}
-	pthread_mutex_unlock(&p->args->checker);
+	pthread_mutex_unlock(game_over_mutex);
 }
 
 /* cleans up resources of simulation
