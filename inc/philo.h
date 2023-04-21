@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 12:37:48 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/04/21 10:26:01 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:11:12 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define FALSE	0
 # define TRUE	1
 # define ERR_CMD "Syntax error. Use: ./philo [number_of_philos] [time_to_die] [time_to_eat]\
-[time_to_sleep] (OPTIONAL - [number_time_must_eat])\n"
+ [time_to_sleep] (OPTIONAL - [number_time_must_eat])\n"
 # define ERR_MAX "ERR_MAX\n"
 # define ERR_ARGS "ERR_ARGS\n"
 

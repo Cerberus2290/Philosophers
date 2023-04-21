@@ -6,7 +6,7 @@
 #    By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/21 10:28:44 by tstrassb          #+#    #+#              #
-#    Updated: 2023/04/21 11:59:08 by tstrassb         ###   ########.fr        #
+#    Updated: 2023/04/21 12:15:14 by tstrassb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,13 +68,13 @@ norm:
 clean:
 					@echo "$(YELLOW)-Cleaning object files...$(DEF_COLOR)"
 					@$(RM) *.o
-					@sleep 1.5
 					@echo "$(GREEN)---CLEANED!---$(DEF_COLOR)"
+					@say "Cleaned!"
 
 fclean:			clean
 					@echo "$(YELLOW)-Cleaning remaining files...$(DEF_COLOR)"
 					@$(RM) $(NAME)
-					@sleep 1.5
 					@echo "$(GREEN)---CLEANED!---$(DEF_COLOR)"
+					@say "Cleaned!"
 
 re:				fclean all
