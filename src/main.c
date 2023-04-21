@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 17:05:56 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/04/20 14:29:57 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:01:55 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	main(int argc, char **argv)
 		return (-1);
 	init_s_control(argv, data);
 	philo_start(data);
-	philo_end(data);
+	philo_over(data);
 	return (0);
 }

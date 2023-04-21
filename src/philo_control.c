@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:52:47 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/04/21 10:16:57 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:01:53 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	philo_over(t_control *input)
 	i = input->nb_philo;
 	while (--i >= 0)
 		pthread_join(input->philo[i].tid, NULL);
-	while (++i < input->philo[i].tid, NULL)
+	while (++i < input->nb_philo)
 		pthread_mutex_destroy(&input->fork[i]);
 	pthread_mutex_destroy(&input->cout);
 	pthread_mutex_destroy(&input->checker);

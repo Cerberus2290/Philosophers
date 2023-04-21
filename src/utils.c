@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:04:27 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/03/23 13:28:12 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:04:51 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	philo_print(t_philo *p, char *state)
 {
 	if (p->args->game_over == FALSE)
 	{
-		phthread_mutex_lock(&p->args->cout);
-		printf("&lld\t%d\t%s\t%s\n", timestamp(p->args), p->id, state);
+		pthread_mutex_lock(&p->args->cout);
+		printf("%lld\t%d\t%s\n", timestamp(p->args), p->id, state);
 		pthread_mutex_unlock(&p->args->cout);
 	}
 }
