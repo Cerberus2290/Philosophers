@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:52:47 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/04/21 13:07:04 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:53:34 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	check_death(t_philo *p)
 	pthread_mutex_lock(&p->args->checker);
 	if ((timestamp(p->args) - p->t_lastmeal) >= p->args->t_to_die)
 	{
-		philo_print(p, "died");
+		philo_print(p, "died \xF0\x9F\x92\x80");
 		p->args->game_over = TRUE;
 	}
 	pthread_mutex_unlock(&p->args->checker);
