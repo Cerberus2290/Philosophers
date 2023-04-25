@@ -89,7 +89,7 @@ void		philo_print(t_philo *p, char *state);
 void		philo_start(t_control *input);
 void		*philo_act(void *p);
 void		checking(t_control *c);
-void		check_death(t_philo *p, pthread_mutex_t *game_over_mutex);
+void		check_death(t_philo *p);
 void		philo_over(t_control *input);
 
 /* functions of philo_acts.c */
