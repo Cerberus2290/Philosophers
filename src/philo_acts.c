@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 17:09:36 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/04/21 14:59:29 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/26 14:30:54 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	*one_philo(void *p)
 	ph = (t_philo *)p;
 	pthread_mutex_lock(&ph->args->fork[ph->l_fork]);
 	philo_print(ph, "has taken a fork \xF0\x9F\x8D\xB4");
+	pthread_mutex_lock(&ph->args->game_over_mutex);
 	ph->t_lastmeal = timestamp(ph->args);
+	pthread_mutex_unlock(&ph->args->game_over_mutex);
 	ft_sleep(ph, ph->args->t_to_die);
 	philo_print(ph, "died \xF0\x9F\x92\x80");
 	ph->args->game_over = TRUE;
@@ -39,7 +41,9 @@ void	philo_eats(t_philo *ph)
 		philo_print(ph, "has taken a fork \xF0\x9F\x8D\xB4");
 		philo_print(ph, "is eating \xF0\x9F\x8D\x9D");
 		ph->t_lastmeal = timestamp(ph->args);
+		pthread_mutex_lock(&ph->lastmeal_mutex);
 		ph->meals_eaten++;
+		pthread_mutex_unlock(&ph->lastmeal_mutex);
 		ft_sleep(ph, ph->args->t_to_eat);
 		pthread_mutex_unlock(&ph->args->fork[ph->l_fork]);
 		pthread_mutex_unlock(&ph->args->fork[ph->r_fork]);

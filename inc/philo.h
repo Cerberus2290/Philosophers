@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 12:37:48 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/04/21 15:46:15 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/26 12:28:18 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,14 @@ typedef struct s_philo		t_philo;
 /* struct to store all info about philosophers */
 typedef struct s_philo
 {
-	pthread_t	tid;
-	int			id;
-	int			meals_eaten;
-	long long	t_lastmeal;
-	int			l_fork;
-	int			r_fork;
-	t_control	*args;
+	pthread_t		tid;
+	int				id;
+	int				meals_eaten;
+	long long		t_lastmeal;
+	pthread_mutex_t	lastmeal_mutex;
+	int				l_fork;
+	int				r_fork;
+	t_control		*args;
 }	t_philo;
 
 /* struct to store info about eat, sleep, die */

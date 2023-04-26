@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:52:47 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/04/21 17:36:48 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/26 14:10:06 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,16 +91,14 @@ prints a message that philosopher died
 ensures that only one philosopher can check death at a time */
 void	check_death(t_philo *p)
 {
-	t_philo	*ph;
-
-	ph = (t_philo *)p;
-	pthread_mutex_lock(&ph->args->game_over_mutex);
-	if ((timestamp(p->args) - p->t_lastmeal) >= p->args->t_to_die)
+	pthread_mutex_lock(&p->args->game_over_mutex);
+	if ((timestamp(p->args) - p->t_lastmeal) >= p->args->t_to_die
+		&& !p->args->game_over)
 	{
 		philo_print(p, "died \xF0\x9F\x92\x80");
 		p->args->game_over = TRUE;
 	}
-	pthread_mutex_unlock(&ph->args->game_over_mutex);
+	pthread_mutex_unlock(&p->args->game_over_mutex);
 }
 
 /* cleans up resources of simulation
