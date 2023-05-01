@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_control.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
+/*   By: tstrassb <tstrassb@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:52:47 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/04/26 14:10:06 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/30 21:00:32 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,19 @@ void	*philo_act(void *p)
 {
 	t_philo		*ph;
 	t_control	*input;
+	int			reached_max_meals;
 
+	reached_max_meals = 0;
 	ph = (t_philo *)p;
 	input = ph->args;
 	if (ph->id % 2)
-		usleep(1500);
+		usleep(2000);
 	while (input->game_over == FALSE)
 	{
-		if (input->max_meals > 0 && ph->meals_eaten == input->max_meals)
+		pthread_mutex_lock(&input->mealseaten_mutex[ph->id - 1]);
+		reached_max_meals = (input->max_meals > 0 && ph->meals_eaten == input->max_meals);
+		pthread_mutex_unlock(&input->mealseaten_mutex[ph->id - 1]);
+		if (reached_max_meals)
 			break ;
 		philo_eats(ph);
 		philo_sleeps(ph);
@@ -91,8 +96,13 @@ prints a message that philosopher died
 ensures that only one philosopher can check death at a time */
 void	check_death(t_philo *p)
 {
+	long long	lastmeal;
+
 	pthread_mutex_lock(&p->args->game_over_mutex);
-	if ((timestamp(p->args) - p->t_lastmeal) >= p->args->t_to_die
+	pthread_mutex_lock(&p->lastmeal_mutex);
+	lastmeal = p->t_lastmeal;
+	pthread_mutex_unlock(&p->lastmeal_mutex);
+	if ((timestamp(p->args) - lastmeal) >= p->args->t_to_die
 		&& !p->args->game_over)
 	{
 		philo_print(p, "died \xF0\x9F\x92\x80");
@@ -110,12 +120,16 @@ void	philo_over(t_control *input)
 
 	i = input->nb_philo;
 	while (--i >= 0)
+	{
 		pthread_join(input->philo[i].tid, NULL);
+		pthread_mutex_destroy(&input->philo[i].lastmeal_mutex);
+		pthread_mutex_destroy(&input->mealseaten_mutex[i]);
+	}
 	while (++i < input->nb_philo)
 		pthread_mutex_destroy(&input->fork[i]);
-	pthread_mutex_destroy(&input->cout);
-	pthread_mutex_destroy(&input->checker);
+	pthread_mutex_destroy(&input->game_over_mutex);
 	free(input->philo);
 	free(input->fork);
+	free(input->mealseaten_mutex);
 	free(input);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
+/*   By: tstrassb <tstrassb@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 12:09:44 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/03/27 12:42:06 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/30 20:53:46 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,13 @@ void	init_s_control(char **argv, t_control *input)
 		input->max_meals = FALSE;
 	input->philo = ft_calloc(input->nb_philo, (sizeof(t_philo)));
 	input->fork = ft_calloc(input->nb_philo, (sizeof(pthread_mutex_t)));
-	pthread_mutex_init(&input->cout, NULL);
-	pthread_mutex_init(&input->checker, NULL);
+	input->mealseaten_mutex = ft_calloc(input->nb_philo, (sizeof(pthread_mutex_t)));
+	pthread_mutex_init(&input->game_over_mutex, NULL);
 	while (++i < input->nb_philo)
+	{
 		pthread_mutex_init(&input->fork[i], NULL);
+		pthread_mutex_init(&input->mealseaten_mutex[i], NULL);
+	}
 	init_s_philo(input);
 	input->t0 = start_time();
 }
@@ -72,7 +75,7 @@ void	init_s_control(char **argv, t_control *input)
 so the program starts consistently */
 void	init_s_philo(t_control *input)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (i < input->nb_philo)
@@ -83,6 +86,7 @@ void	init_s_philo(t_control *input)
 		input->philo[i].l_fork = i;
 		input->philo[i].r_fork = (i + 1) % input->nb_philo;
 		input->philo[i].args = input;
+		pthread_mutex_init(&(input->philo[i].lastmeal_mutex), NULL);
 		i++;
 	}
 }

@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+         #
+#    By: tstrassb <tstrassb@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/21 10:28:44 by tstrassb          #+#    #+#              #
-#    Updated: 2023/04/26 14:07:24 by tstrassb         ###   ########.fr        #
+#    Updated: 2023/04/30 20:58:28 by tstrassb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	philo
 
-CFLAGS		=	-g -pthread -Wall -Wextra -Werror
+CFLAGS		=	-g -Wall -Wextra -Werror -fsanitize=thread
 
 RM			=	rm -rf
 
@@ -44,7 +44,7 @@ all:			$(NAME)
 				@echo "|        alive as long as possible          |"
 				@echo "|                                           |"
 				@echo "---------------------------------------------$(DEF_COLOR)"
-				@say "Philosophers, keep the smart and wise alive as long as possible"
+#				@say "Philosophers, keep the smart and wise alive as long as possible"
 				@echo "$(CYAN)********************************************"
 				@echo "*          To check Norminette             *"
 				@echo "*            type: $(WHITE)make norm$(CYAN)               *"
@@ -69,12 +69,12 @@ clean:
 					@echo "$(YELLOW)-Cleaning object files...$(DEF_COLOR)"
 					@$(RM) *.o
 					@echo "$(GREEN)---CLEANED!---$(DEF_COLOR)"
-					@say "Cleaned!"
+#					@say "Cleaned!"
 
 fclean:			clean
 					@echo "$(YELLOW)-Cleaning remaining files...$(DEF_COLOR)"
 					@$(RM) $(NAME)
 					@echo "$(GREEN)---CLEANED!---$(DEF_COLOR)"
-					@say "Cleaned!"
+#					@say "Cleaned!"
 
 re:				fclean all

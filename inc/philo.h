@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
+/*   By: tstrassb <tstrassb@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 12:37:48 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/04/26 12:28:18 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/30 20:47:09 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,8 @@ typedef struct s_control
 	int				max_meals;
 	t_philo			*philo;
 	pthread_mutex_t	*fork;
-	pthread_mutex_t	cout;
-	pthread_mutex_t	checker;
 	pthread_mutex_t	game_over_mutex;
+	pthread_mutex_t	*mealseaten_mutex;
 	int				error;
 	int				end_meal;
 	int				game_over;

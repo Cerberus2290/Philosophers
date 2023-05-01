@@ -6,7 +6,7 @@
 /*   By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:04:27 by tstrassb          #+#    #+#             */
-/*   Updated: 2023/04/21 15:06:08 by tstrassb         ###   ########.fr       */
+/*   Updated: 2023/04/28 09:25:33 by tstrassb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,5 @@ void	*ft_calloc(size_t count, size_t size)
 /* prints state of philosophers ... */
 void	philo_print(t_philo *p, char *state)
 {
-	if (p->args->game_over == FALSE)
-	{
-		pthread_mutex_lock(&p->args->cout);
-		printf("%lldms Philo%d %s\n", timestamp(p->args), p->id, state);
-		pthread_mutex_unlock(&p->args->cout);
-	}
+	printf("%lldms Philo%d %s\n", timestamp(p->args), p->id, state);
 }
