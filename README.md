@@ -88,3 +88,24 @@ About the logs of your program:
  <a href="https://github.com/Cerberus2290/Philosophers#-beware-">back to top</a>
 </p>
 
+# <a name="manda">Mandatory part</a>
+
+| ![Logo_Monolith_small](https://user-images.githubusercontent.com/120580537/209333599-dc44418d-8ee7-42b6-8a4a-7ff328778d87.png) | |
+| ----- | ----- |
+| Program name | philo |
+| Turn in files | Makefile, *.h, *.c, in directory philo/ |
+| Makefile | NAME, all, clean, fclean, re |
+| Arguments | number_of_philosophers / time_to_die / <br>time_to_eat / time_to_sleep / [number_of_times_each_philosopher_must_eat] |
+| External functions | memset, printf, malloc, free, write, <br>usleep, gettimeofday, pthread_create, <br>pthread_detach, pthread_join, pthread_mutex_init, <br>pthread_mutex_destroy, pthread_mutex_lock, pthread_mutex_unlock |
+| Libft authorized | No |
+| Description | Philosophers with threads and mutexes |
+
+The specific rules for the mandatory part are:
+
+* Each philosopher should be a thread.
+* There is one fork between each pair of philosophers. Therefore, if there are several philosophers, each philosopher has a fork on their left side and a fork on their right side. <br>If there is only one philosopher, there should be only one fork on the table.
+* To prevent philosophers from duplicating forks, you should protect the forks state with a mutex for each of them.
+
+<p align="right">
+ <a href="https://github.com/Cerberus2290/Philosophers#-beware-">back to top</a>
+</p>
