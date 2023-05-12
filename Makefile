@@ -6,13 +6,13 @@
 #    By: tstrassb <tstrassb@student.42>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/21 10:28:44 by tstrassb          #+#    #+#              #
-#    Updated: 2023/05/05 13:12:26 by tstrassb         ###   ########.fr        #
+#    Updated: 2023/05/12 14:17:56 by tstrassb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	philo
 
-CFLAGS		=	-g -Wall -Wextra -Werror -fsanitize=thread
+CFLAGS		=	-g -Wall -Wextra -Werror #-fsanitize=thread
 
 RM			=	rm -rf
 
