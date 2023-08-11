@@ -1,3 +1,7 @@
+[![tstrassb's 42 stats](https://badge42.vercel.app/api/v2/clk7xyddm001108l1dlt4bjx7/stats?cursusId=21&coalitionId=354)](https://github.com/JaeSeoKim/badge42)
+
+# Philosophers - Final Score [![tstrassb's 42 Philosophers Score](https://badge42.vercel.app/api/v2/clk7xyddm001108l1dlt4bjx7/project/3075704)](https://github.com/JaeSeoKim/badge42)
+
 <h1 align="center">✋ BEWARE ✋</h1>
 
 ## If you are a 42 Student, do not copy/paste this project, it will be considered cheating and you will be grated -42.
